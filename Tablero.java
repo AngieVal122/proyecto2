@@ -1,7 +1,7 @@
 
 public class Tablero {
     /*
-
+     Creamos lo atributos
      */
     private char [][] matriz;
     private int TAMANO;
@@ -13,7 +13,9 @@ public class Tablero {
         inicializarMatriz();
     }
 
-
+/*
+Creamos el método inicializarMatriz, que nos va ayudar a pintar el tablero de *
+ */
     private void inicializarMatriz() {
         matriz = new char[TAMANO][TAMANO];
         for (int i = 0; i < TAMANO; i++) {
@@ -22,7 +24,9 @@ public class Tablero {
             }
         }
     }
-
+/*
+Creamos otro método de imprimir matriz, donde nos muestra la pamtriz ocn la posición del barco
+ */
     public void imprimirMatriz() {
         System.out.println("Matriz con barcos:");
         for (int i = 0; i < matriz.length; i++) {
@@ -32,11 +36,15 @@ public class Tablero {
             System.out.println();
         }
     }
-
+/*
+Se muestra la matriz con barcos
+ */
     public char[][] getMatriz() {
         return matriz;
     }
-
+/*
+Muestra la variable TAMANO
+ */
     public int getTAMANO() {
         return TAMANO;
     }

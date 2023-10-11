@@ -1,10 +1,20 @@
 public class Barco {
+    /*
+Creamos el atributo tablero
+     */
     private Tablero tablero;
+
+    /*
+    Creamos el contructor que nos ayuda a inicializar tablero
+     */
 
     public Barco(Tablero tablero) {
         this.tablero = tablero;
     }
-
+/*
+Creamos un metodo boolean que se llama adicionar barco, alli nos ayudara
+a psoscionar el barco dentro de la matriz y sino nos retorna un false, evaluando los diferentes casos
+ */
     public boolean adicionarBarco(int f1, int c1, int tipoBarco) {
         char[][] matriz = tablero.getMatriz();
 
@@ -12,7 +22,9 @@ public class Barco {
             System.out.println("Posición por fuera de la matriz");
             return false;
         }
-
+/*
+Entra a cada uno de los casos
+ */
         switch (tipoBarco) {
             case 0:
                 return barco1(f1, c1, matriz);
@@ -27,11 +39,15 @@ public class Barco {
                 return false;
         }
     }
-
+/*
+Nos ayuda a validar si la posicion del barco este dentro de la matriz
+ */
     private boolean posicionValida(int coordenada) {
         return (coordenada >= 0 && coordenada < tablero.getTAMANO());
     }
-
+/*
+Nos ayuda a posicionar el barco1 en la matriz con los parametros dados
+ */
     private boolean barco1(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
@@ -44,7 +60,9 @@ public class Barco {
         matriz[fila][columna] = barco;
         return true;
     }
-
+    /*
+    Nos ayuda a posicionar el barco2 en la matriz con los parametros dados
+     */
     private boolean barco2(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
@@ -61,7 +79,9 @@ public class Barco {
         matriz[fila + 1][columna] = barco;
         return true;
     }
-
+    /*
+    Nos ayuda a posicionar el barco3 en la matriz con los parametros dados
+     */
     private boolean barco3(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
@@ -79,7 +99,9 @@ public class Barco {
         matriz[f1][c1 + 2] = barco;
         return true;
     }
-
+    /*
+    Nos ayuda a posicionar el barco4 en la matriz con los parametros dados
+     */
     private boolean barco4(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
