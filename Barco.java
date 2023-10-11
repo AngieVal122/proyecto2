@@ -1,63 +1,54 @@
-public class Barco{
-    private int f1;
-    private int c1;
+public class Barco {
+    private Tablero tablero;
 
-    private int tipoBarco;
-    public Barco (int f1, int c1, int tipoBarco ) {
-        this.c1 = c1;
-        this.f1 = f1;
-        this.tipoBarco = tipoBarco;
-
-    }
-    Tablero tablero= new Tablero();
-    int valor = tablero.getTAMANO();
-    char [][] matriz = tablero.getMatriz();
-    boolean posicionValida = true;
-
-    public boolean posicionValida(int coordenada){
-        return (coordenada >= 0 && coordenada <=valor );
+    public Barco(Tablero tablero) {
+        this.tablero = tablero;
     }
 
-    public boolean adicionarBarco(){
-        if (!(posicionValida(f1) && posicionValida(c1))){
+    public boolean adicionarBarco(int f1, int c1, int tipoBarco) {
+        char[][] matriz = tablero.getMatriz();
+
+        if (!posicionValida(f1) || !posicionValida(c1)) {
             System.out.println("Posición por fuera de la matriz");
             return false;
         }
 
-        switch (tipoBarco){
+        switch (tipoBarco) {
             case 0:
-                return barco1(f1, c1);
+                return barco1(f1, c1, matriz);
             case 1:
-                return barco2(f1, c1);
+                return barco2(f1, c1, matriz);
             case 2:
-                return barco3(f1, c1);
+                return barco3(f1, c1, matriz);
             case 3:
-                return barco4(f1, c1);
+                return barco4(f1, c1, matriz);
             default:
                 System.out.println("Barco inválido");
                 return false;
         }
     }
 
+    private boolean posicionValida(int coordenada) {
+        return (coordenada >= 0 && coordenada < tablero.getTAMANO());
+    }
 
-    //Método para ubicar barcos de UNA casilla
-    private boolean barco1(int f1, int c1) {
+    private boolean barco1(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
-        if (matriz [fila][columna]!= '*') {
+        if (matriz[fila][columna] != '*') {
             System.out.println("Casilla ocupada");
             return false;
         }
 
-        char barco =  'D';
+        char barco = 'D';
         matriz[fila][columna] = barco;
         return true;
     }
 
-    private boolean barco2(int f1, int c1) {
+    private boolean barco2(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
-        if(fila > valor - 2){
+        if (fila > tablero.getTAMANO() - 2) {
             System.out.println("Espacio insuficiente");
             return false;
         }
@@ -70,11 +61,11 @@ public class Barco{
         matriz[fila + 1][columna] = barco;
         return true;
     }
-    //Método para ubicar barco de TRES casillas
-    private boolean barco3(int f1, int c1) {
+
+    private boolean barco3(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
-        if(columna > valor - 3){
+        if (columna > tablero.getTAMANO() - 3) {
             System.out.println("Espacio insuficiente");
             return false;
         }
@@ -88,11 +79,11 @@ public class Barco{
         matriz[f1][c1 + 2] = barco;
         return true;
     }
-    //Método para ubicar barcos de CUATRO casillas horizontal
-    private  boolean barco4(int f1, int c1) {
+
+    private boolean barco4(int f1, int c1, char[][] matriz) {
         int fila = f1;
         int columna = c1;
-        if(columna > valor - 4){
+        if (columna > tablero.getTAMANO() - 4) {
             System.out.println("Espacio insuficiente");
             return false;
         }
@@ -108,6 +99,5 @@ public class Barco{
         matriz[fila][columna + 3] = barco;
         return true;
     }
-    private posicionValida = adicionarBarco(f1, c1, tipoBarco);
 }
 
