@@ -6,7 +6,7 @@ public class Tablero {
     private char [][] matriz;
     private int TAMANO;
     /*
-    Creamos un constructor para inicializar TAMANO
+    Creamos un constructor para inicializar TAMANO e inicializarMatriz
      */
     public Tablero () {
         this.TAMANO = 7;
